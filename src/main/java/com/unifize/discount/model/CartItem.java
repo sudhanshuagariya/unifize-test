@@ -1,4 +1,4 @@
-package com.example.unifize.model;
+package com.unifize.discount.model;
 
 import lombok.Data;
 import lombok.Builder;
@@ -6,7 +6,8 @@ import lombok.Builder;
 @Data
 @Builder
 public class CartItem {
+    private String customerId;
     private Product product;
-    private int quantity;
+    private Integer quantity;
     private String size;
 } 

@@ -1,4 +1,4 @@
-package com.example.unifize.model;
+package com.unifize.discount.model;
 
 public enum BrandTier {
     PREMIUM,

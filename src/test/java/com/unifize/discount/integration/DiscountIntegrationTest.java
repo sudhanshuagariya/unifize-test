@@ -1,8 +1,7 @@
-package com.example.unifize.integration;
+package com.unifize.discount.integration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -12,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.example.unifize.config.TestData;
-import com.example.unifize.exception.DiscountCalculationException;
-import com.example.unifize.exception.DiscountValidationException;
-import com.example.unifize.model.DiscountedPrice;
-import com.example.unifize.service.DiscountService;
+import com.unifize.discount.config.TestData;
+import com.unifize.discount.exception.DiscountCalculationException;
+import com.unifize.discount.exception.DiscountValidationException;
+import com.unifize.discount.model.DiscountedPrice;
+import com.unifize.discount.service.DiscountService;
 
 @SpringBootTest
 @ActiveProfiles("test")

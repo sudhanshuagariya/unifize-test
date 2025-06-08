@@ -1,4 +1,4 @@
-package com.example.unifize.exception;
+package com.unifize.discount.exception;
 
 public class DiscountValidationException extends RuntimeException {
     public DiscountValidationException(String message) {

@@ -1,14 +1,12 @@
-package com.example.unifize.service;
+package com.unifize.discount.service;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.unifize.discount.model.*;
 import org.springframework.stereotype.Service;
-import com.example.unifize.model.CartItem;
-import com.example.unifize.model.CustomerProfile;
-import com.example.unifize.model.DiscountedPrice;
-import com.example.unifize.model.PaymentInfo;
-import com.example.unifize.exception.DiscountCalculationException;
-import com.example.unifize.exception.DiscountValidationException;
+import com.unifize.discount.exception.DiscountCalculationException;
+import com.unifize.discount.exception.DiscountValidationException;
 
 @Service
 public interface DiscountService {
@@ -26,7 +24,7 @@ public interface DiscountService {
      */
     DiscountedPrice calculateCartDiscounts(
         List<CartItem> cartItems,
-        CustomerProfile customer,
+        Customer customer,
         Optional<PaymentInfo> paymentInfo
     ) throws DiscountCalculationException;
 
@@ -46,6 +44,6 @@ public interface DiscountService {
     boolean validateDiscountCode(
         String code,
         List<CartItem> cartItems,
-        CustomerProfile customer
+        Customer customer
     ) throws DiscountValidationException;
 } 

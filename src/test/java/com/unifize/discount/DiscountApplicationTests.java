@@ -1,10 +1,10 @@
-package com.example.unifize;
+package com.unifize.discount;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UnifizeApplicationTests {
+class DiscountApplicationTests {
 
 	@Test
 	void contextLoads() {
