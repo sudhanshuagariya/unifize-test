@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Optional;
 
+import com.unifize.discount.exception.DiscountValidationException;
 import com.unifize.discount.model.*;
 import com.unifize.discount.repository.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -127,8 +128,21 @@ class DiscountServiceImplTest {
     }
 
     @Test
-    @DisplayName("Should throw exception when validation fails")
-    void validateDiscountCode_ThrowsException() {
+    @DisplayName("Should throw exception if product not found")
+    void calculateCartDiscounts_Exception() throws DiscountCalculationException {
+        // Arrange
+        when(productRepository.findById(any())).thenReturn(Optional.empty());
+
+        assertThrows(DiscountCalculationException.class, () ->  discountService.calculateCartDiscounts(
+                Arrays.asList(testCartItem.get()),
+                testCustomer.get(),
+                Optional.of(testPayment.get())
+        ));
+    }
+
+    @Test
+    @DisplayName("Should return true if code exists for the customer")
+    void validateDiscountCode_Success() {
         // Arrange
         when(productRepository.findById(any())).thenReturn(testProduct);
         when(brandRepository.findByBrandName(any())).thenReturn(brand);
@@ -147,5 +161,18 @@ class DiscountServiceImplTest {
         // Assert
         assertNotNull(result);
         assertEquals(true, result);
+    }
+
+    @Test
+    @DisplayName("Should throw exception if product not found")
+    void validateDiscountCode_ThrowsException() {
+        // Arrange
+        when(productRepository.findById(any())).thenReturn(Optional.empty());
+
+        assertThrows(DiscountValidationException.class, () ->  discountService.validateDiscountCode(
+                "ICICI",
+                Arrays.asList(testCartItem.get()),
+                testCustomer.get()
+        ));
     }
 } 
